@@ -5,15 +5,16 @@ import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ allManager }) {
-  const [managerData, setManagerData] = useState(allManager);
-  const [date, setDate] = useState("");
-
+export default function Home(props) {
+  const allManager = props.allManager;
   const belowTwenty = allManager.filter((data) => data.age <= 20);
   const twentoToTirtyNine = allManager.filter(
     (data) => data.age >= 21 && data.age <= 39
   );
   const aboveForty = allManager.filter((data) => data.age >= 40);
+
+  const [managerData, setManagerData] = useState(allManager);
+  const [date, setDate] = useState("");
 
   const filterManager = function (e) {
     const filter = e.target.value;
@@ -80,9 +81,11 @@ export default function Home({ allManager }) {
           {/* Display Manager */}
           <div className="border-t-2 border-b-2 py-10 my-5 grid grid-cols-3 gap-7">
             {/* Card */}
-            {managerData.map((data) => (
-              <Card key={data.id} manager={data} />
-            ))}
+            {managerData
+              .sort((a, b) => a.age - b.age)
+              .map((data) => (
+                <Card key={data.id} manager={data} />
+              ))}
           </div>
 
           {/* Date Conversion */}
