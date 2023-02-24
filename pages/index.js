@@ -1,9 +1,6 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
 import Card from "@/components/Card";
 import { useState } from "react";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home(props) {
   const allManager = props.allManager;
@@ -26,6 +23,8 @@ export default function Home(props) {
       setManagerData(aboveForty);
     } else if (filter === "allManager") {
       setManagerData(allManager);
+    } else {
+      return;
     }
   };
 
@@ -57,18 +56,18 @@ export default function Home(props) {
       </Head>
       <main>
         <div className="bg-red-50">
-          <h1 className="text-center text-stone-700 py-10 text-4xl">
+          <h1 className="text-center text-stone-700 py-5 md:py-10 text-xl md:text-4xl">
             DISTRICT MANAGER
           </h1>
         </div>
-        <section className=" max-w-6xl mx-auto my-12">
+        <section className="mx-10 lg:max-w-6xl lg:mx-auto my-12">
           {/* Filter */}
           <div>
             <span className="text-lg block">Filter By Age</span>
             <select
               defaultValue="All"
               name="status"
-              className="border p-2 w-96 my-2"
+              className="border p-2 w-52 sm:w-96 my-2"
               onChange={filterManager}
             >
               <option value="allManager">All</option>
@@ -79,7 +78,7 @@ export default function Home(props) {
           </div>
 
           {/* Display Manager */}
-          <div className="border-t-2 border-b-2 py-10 my-5 grid grid-cols-3 gap-7">
+          <div className="border-t-2 border-b-2 py-10 my-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {/* Card */}
             {managerData
               .sort((a, b) => a.age - b.age)
@@ -94,7 +93,7 @@ export default function Home(props) {
             <input
               onChange={(e) => setDate(e.target.value)}
               type="date"
-              className="border p-2 w-96 my-2"
+              className="border p-2 w-52 sm:w-96 my-2"
             />
             <button
               onClick={convertDate}

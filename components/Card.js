@@ -15,8 +15,8 @@ const Card = function ({ manager }) {
         />
       </div>
       <div className="ml-8">
-        <h2 className="text-2xl font-bold my-2">{manager.name}</h2>
-        <p className="text-sm">
+        <h2 className="text-lg md:text-2xl font-bold my-2">{manager.name}</h2>
+        <p className="text-xs sm:text-sm">
           Email: <span className="font-bold">{manager.email}</span>
         </p>
         <p className="text-sm">
