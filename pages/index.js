@@ -39,7 +39,7 @@ export default function Home(props) {
       }
     }
   };
-  // countMe();
+  countMe();
 
   const convertDate = function () {
     const [year, month, day] = date.split("-");
