@@ -5,7 +5,7 @@ import { FiMenu } from "react-icons/fi";
 import { useState } from "react";
 
 const Navbar = function () {
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(true);
   return (
     <header className="bg-rose-700 py-4 px-7 flex justify-between md:justify-start">
       <div>
